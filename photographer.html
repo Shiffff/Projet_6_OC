@@ -8,6 +8,7 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+    <div class="bground"></div>
     <header>
       <img src="assets/images/logo.png" class="logo" onclick="location.href='./index.html'" />
     </header>
@@ -24,12 +25,63 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
+        
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
+          
+					<div
+          class="formData">
+          
+            <label for="firstName">Prénom</label><br>
+            <input
+              class="text-control"
+              type="text"
+              id="firstName"
+              name="firstName"
+              minlength="2"
+            /><br>
+            <p class="errorMessage ErrorFirstName"></p>
+          </div>
+          <div
+            class="formData">
+            <label for="lastName">Nom</label><br>
+            <input
+              class="text-control"
+              type="text"
+              id="lastName"
+              name="lastName"
+            /><br>
+            <p class="errorMessage ErrorLastName"></p>
+          </div>
+          <div
+            class="formData">
+            <label for="email">E-mail</label><br>
+            <input
+              class="text-control"
+              type="email"
+              id="email"
+              name="email"
+            /><br>
+            <p class="errorMessage ErrorEmail"></p>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div
+          class="formData">
+          
+            <label for="TextMessage">Votre message</label><br>
+            <input
+              class="text-control"
+              type="text"
+              id="TextMessage"
+              name="TextMessage"
+              minlength="2"
+            /><br>
+            <p class="errorMessage ErrorTextMessage"></p>
+          </div>
+          <input
+          class="btn-submit button"
+          type="submit"
+          value="Envoyer"
+        />
+
 				</form>
 			</div>
 		</div>
@@ -41,10 +93,9 @@
         <option value="Titre">Titre</option>
       </select>
     </div>
-
     <div class="displayMedia">
-
     </div>
+    <script src="scripts/components/modal.js"></script>
     <script src="scripts/components/components.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
