@@ -9,11 +9,13 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" onclick="location.href='./index.html'" />
     </header>
     <main id="main">
       <div class="photograph-header">
+        <div class="photographDescription"></div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photographPic"></div>
       </div>
     </main>
     <div id="contact_modal">
@@ -31,6 +33,21 @@
 				</form>
 			</div>
 		</div>
+    <div class="sortDiv">
+      <p>Trier Par</p>
+      <select name="sort" id ="sortSelect">
+        <option value="Popularité">Popularité</option>
+        <option value="Date">Date</option>
+        <option value="Titre">Titre</option>
+      </select>
+    </div>
+
+    <div class="displayMedia">
+
+    </div>
+    <script src="scripts/components/components.js"></script>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

@@ -6,6 +6,9 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .contact_button {
@@ -73,4 +76,73 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+.displayMedia img{
+    width: 350px;
+    height: 350px;
+
+}
+
+.photographer_section img{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.cityName{
+    color: #901C1C;
+    font-size: 20px;
+    margin: 0;
+}
+
+
+.EncartDiv{
+    position: fixed;
+    right: 30px;
+    bottom: 0px;
+    background-color: #D3573C;
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+
+    
+}
+.descriptionDiv h1{
+    color: #D3573C;
+    font-weight: 200;
+    font-size: 55px;
+    margin: 0;
+}
+.displayMedia{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin: 0 100px;
+}
+
+.displayMedia article{
+    margin: auto;
+    margin-bottom: 25px;
+    
+}
+
+.titlePicDiv{
+    display: flex;
+    justify-content: space-between;
+    color:#901C1C;
+
+}
+main {
+    margin-bottom: 50px;
+}
+.sortDiv{
+    display: flex;
+    margin: 0 100px;
+    margin-bottom: 50px;
+}
+.titlePicDiv img{
+    width: 15px;
+    height: 15px;
 }
