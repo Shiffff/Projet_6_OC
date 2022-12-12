@@ -123,6 +123,19 @@ form input {
     grid-template-columns: 33% 33% 33%;
     margin: 0 100px;
 }
+@media screen and (max-width: 1350px) {
+    .displayMedia{
+        grid-template-columns: 45% 45%;
+
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .displayMedia{
+        grid-template-columns: 1fr 
+
+    }
+  }
+
 
 .displayMedia article{
     margin: auto;
@@ -169,4 +182,74 @@ video{
     width: 100%;
     overflow: auto;
     background-color: rgba(107, 110, 126, 0.4);
+  }
+  .lightBoxDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 99;
+  }
+
+  .lightboxNext, .lightboxPrev{
+    border:none;
+    background: url(../assets/icons/arrow.svg) no-repeat;
+    width: 30px;
+    height: 50px;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    margin-top: -14px;
+    z-index: 99;
+    cursor: pointer;
+
+  }
+  .lightboxPrev{
+    right: auto;
+    left: 0;
+    ;
+  }
+  .lightboxNext{
+    transform: rotate(180deg)
+
+  }
+  .lightboxClose{
+    border: none;
+    width: 50px;
+    height: 50px;
+    background: url(../assets/icons/cross.svg) no-repeat;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+  }
+  .lightBoxContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin-left: 200px;
+    margin-right: 200px;
+
+  }
+  .lightBoxContainer img{
+    max-width: 800px;
+    max-height: 800px;
+    height: auto;
+  }
+  .lightBoxContainer video{
+    width: 800px;
+    height: 800px;
+    height: auto;
+  }
+  .lightBoxDiv{
+    min-width: 900px;
+  }
+  .titlePic{
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+    color: #901C1C;
   }

@@ -10,11 +10,28 @@ function mediaFactory(data) {
 
     if (image) {
       const img = document.createElement("img");
+      img.classList.add("viewData");
+      img.addEventListener("click", function handleclick() {
+        lightbox(img, "img", title);
+      });
+
       img.setAttribute("src", picture);
       article.appendChild(img);
+      const obj = { link: `http://127.0.0.1:5500/${picture}`, title: title };
+      newlinks.push(obj);
+      links.push(`http://127.0.0.1:5500/${picture}`);
     } else if (video) {
       const vds = document.createElement("video");
+      vds.classList.add("viewData");
+      vds.addEventListener("click", function handleclick() {
+        lightbox(vds, "vds", title);
+      });
       vds.setAttribute("src", videoSrc);
+      const obj = { link: `http://127.0.0.1:5500/${videoSrc}`, title: title };
+      newlinks.push(obj);
+
+      links.push(`http://127.0.0.1:5500/${videoSrc}`);
+
       article.appendChild(vds);
     }
 

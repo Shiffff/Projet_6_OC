@@ -47,6 +47,7 @@ async function initMedia() {
   const trueMedia = await selectMedia(media);
   displayMediaData(trueMedia);
   console.log(trueMedia);
+
   const likesArray = [];
 
   trueMedia.forEach((element) => {
