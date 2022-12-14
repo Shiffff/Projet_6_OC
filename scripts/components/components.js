@@ -43,7 +43,9 @@ class Date {
     return fitlerName === "Date";
   }
   static order(items) {
-    return items.sort((a, b) => b.date - a.date);
+    return items.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
   }
 }
 
@@ -51,7 +53,6 @@ const filters = [Popular, Name, Date];
 
 const sortMedia = (trueMedia) => {
   const selectSort = document.querySelector("#sortSelect");
-  console.log(selectSort.value);
   for (const filter of filters)
     if (filter.supports(selectSort.value)) {
       trueMedia = filter.order(trueMedia);
