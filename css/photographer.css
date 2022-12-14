@@ -108,7 +108,7 @@ form input {
     background-color: #D3573C;
     width: 300px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 
     
 }
@@ -252,4 +252,12 @@ video{
     bottom: 20px;
     left: 100px;
     color: #901C1C;
+  }
+
+  .numberLikeDiv{
+    display: flex;
+  }
+
+  .EncartDiv img {
+    margin-right: 80px;
   }

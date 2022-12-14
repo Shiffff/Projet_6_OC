@@ -42,13 +42,17 @@ function mediaFactory(data) {
     titlePic.textContent = title;
     const p = document.createElement("p");
     p.textContent = likes;
+    const numberLike = document.createElement("div");
+    numberLike.classList.add("numberLikeDiv");
+
     const icon = document.createElement("img");
 
     icon.setAttribute("src", "assets/icons/heart-fill-custom.svg");
 
     picDiv.appendChild(titlePic);
-    picDiv.appendChild(p);
-    p.appendChild(icon);
+    numberLike.appendChild(p);
+    numberLike.appendChild(icon);
+    picDiv.appendChild(numberLike);
 
     article.appendChild(picDiv);
 

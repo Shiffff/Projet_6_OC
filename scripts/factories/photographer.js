@@ -65,10 +65,16 @@ function photographerFactory(data) {
     EncartDiv.classList.add("EncartDiv");
     const EncartLikes = document.createElement("p");
     EncartLikes.classList.add("nbLikes");
+
+    const iconHeart = document.createElement("img");
+    iconHeart.setAttribute("src", "assets/icons/heart-fill-black.svg");
+
     const EncartPrices = document.createElement("p");
     EncartPrices.textContent = price + "€" + "/" + "jour";
 
     EncartDiv.appendChild(EncartLikes);
+    EncartDiv.appendChild(iconHeart);
+
     EncartDiv.appendChild(EncartPrices);
 
     return EncartDiv;

@@ -10,8 +10,51 @@ async function getPhotographers() {
 
 const displayLikes = (sum) => {
   const nblikestext = document.querySelector(".nbLikes");
-  const icon = document.createElement("img");
-  icon.setAttribute("src", "assets/icons/heart-fill-black.svg");
   nblikestext.textContent = sum;
-  nblikestext.appendChild(icon);
+};
+
+class Popular {
+  static supports(fitlerName) {
+    return fitlerName === "Popularité";
+  }
+  static order(items) {
+    return items.sort((a, b) => b.likes - a.likes);
+  }
+}
+
+class Name {
+  static supports(fitlerName) {
+    return fitlerName === "Titre";
+  }
+  static order(items) {
+    return items.sort((a, b) => {
+      if (a.title < b.title) {
+        return -1;
+      }
+      if (a.title > b.title) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+}
+class Date {
+  static supports(fitlerName) {
+    return fitlerName === "Date";
+  }
+  static order(items) {
+    return items.sort((a, b) => b.date - a.date);
+  }
+}
+
+const filters = [Popular, Name, Date];
+
+const sortMedia = (trueMedia) => {
+  const selectSort = document.querySelector("#sortSelect");
+  console.log(selectSort.value);
+  for (const filter of filters)
+    if (filter.supports(selectSort.value)) {
+      trueMedia = filter.order(trueMedia);
+    }
+  return trueMedia;
 };
