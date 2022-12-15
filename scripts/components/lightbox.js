@@ -1,5 +1,6 @@
 const links = [];
 const newlinks = [];
+console.log(newlinks);
 
 const lightbox = (data, whatData, title) => {
   const lightBox = document.querySelector(".lightBox");
@@ -44,15 +45,15 @@ const lightbox = (data, whatData, title) => {
           const titlepic = lightboxdiv.querySelector(".titlePic");
           titlepic.innerHTML = name.title;
         }
-      });
-      const extentionTypeNext = nextEl.split(".").pop();
-      if (extentionTypeNext == "jpg") {
-        lightBoxContainer.innerHTML = `<img  src=${nextEl}>`;
-      } else if (extentionTypeNext == "mp4") {
-        lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl}>`;
-      }
-    });
 
+        const extentionTypeNext = nextEl.split(".").pop();
+        if (extentionTypeNext == "jpg") {
+          lightBoxContainer.innerHTML = `<img  src=${nextEl} alt="${name.title}" >`;
+        } else if (extentionTypeNext == "mp4") {
+          lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl} alt="${name.title}">`;
+        }
+      });
+    });
   document.addEventListener("keyup", function (e) {
     if (e.key === "ArrowRight") {
       const img = lightBoxContainer.children[0].src;
@@ -70,7 +71,7 @@ const lightbox = (data, whatData, title) => {
       });
       const extentionTypeNext = nextEl.split(".").pop();
       if (extentionTypeNext == "jpg") {
-        lightBoxContainer.innerHTML = `<img  src=${nextEl}>`;
+        lightBoxContainer.innerHTML = `<img  src=${nextEl} >`;
       } else if (extentionTypeNext == "mp4") {
         lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl}>`;
       }
@@ -91,15 +92,15 @@ const lightbox = (data, whatData, title) => {
           const titlepic = lightboxdiv.querySelector(".titlePic");
           titlepic.innerHTML = name.title;
         }
-      });
-      const extentionTypeNext = nextEl.split(".").pop();
-      if (extentionTypeNext == "jpg") {
-        lightBoxContainer.innerHTML = `<img  src=${nextEl}>`;
-      } else if (extentionTypeNext == "mp4") {
-        lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl}>`;
-      }
-    });
 
+        const extentionTypeNext = nextEl.split(".").pop();
+        if (extentionTypeNext == "jpg") {
+          lightBoxContainer.innerHTML = `<img  src=${nextEl} alt="${name.title}">`;
+        } else if (extentionTypeNext == "mp4") {
+          lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl} alt="${name.title}">`;
+        }
+      });
+    });
   document.addEventListener("keyup", function (e) {
     if (e.key === "ArrowLeft") {
       const img = lightBoxContainer.children[0].src;
@@ -124,9 +125,9 @@ const lightbox = (data, whatData, title) => {
   });
 
   if (whatData == "img") {
-    lightBoxContainer.innerHTML = `<img  src=${data.src}>`;
+    lightBoxContainer.innerHTML = `<img  src=${data.src} alt="${title}">`;
   } else if (whatData == "vds") {
-    lightBoxContainer.innerHTML = `<video controls='controls' src=${data.src}>`;
+    lightBoxContainer.innerHTML = `<video controls='controls' src=${data.src} alt="${title}">`;
   }
   lightBox.appendChild(lightboxdiv);
   lightboxdiv.appendChild(lightBoxContainer);

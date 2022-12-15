@@ -38,7 +38,7 @@ class Name {
     });
   }
 }
-class Date {
+class DateObj {
   static supports(fitlerName) {
     return fitlerName === "Date";
   }
@@ -49,7 +49,7 @@ class Date {
   }
 }
 
-const filters = [Popular, Name, Date];
+const filters = [Popular, Name, DateObj];
 
 const sortMedia = (trueMedia) => {
   const selectSort = document.querySelector("#sortSelect");

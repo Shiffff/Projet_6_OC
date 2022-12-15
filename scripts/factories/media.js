@@ -16,10 +16,12 @@ function mediaFactory(data) {
       });
 
       img.setAttribute("src", picture);
+      img.setAttribute("alt", title);
+
       article.appendChild(img);
-      const obj = { link: `http://127.0.0.1:5500/${picture}`, title: title };
+      const obj = { link: `${localLink}${picture}`, title: title };
       newlinks.push(obj);
-      links.push(`http://127.0.0.1:5500/${picture}`);
+      links.push(`${localLink}${picture}`);
     } else if (video) {
       const vds = document.createElement("video");
       vds.classList.add("viewData");
@@ -27,10 +29,12 @@ function mediaFactory(data) {
         lightbox(vds, "vds", title);
       });
       vds.setAttribute("src", videoSrc);
-      const obj = { link: `http://127.0.0.1:5500/${videoSrc}`, title: title };
+      vds.setAttribute("alt", title);
+
+      const obj = { link: `${localLink}${videoSrc}`, title: title };
       newlinks.push(obj);
 
-      links.push(`http://127.0.0.1:5500/${videoSrc}`);
+      links.push(`${localLink}${videoSrc}`);
 
       article.appendChild(vds);
     }

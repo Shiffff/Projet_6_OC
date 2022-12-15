@@ -30,6 +30,8 @@ h2 {
 .logo {
     height: 50px;
     margin-left: 100px;
+    cursor: pointer;
+
 }
 
 .photographer_section {
@@ -66,6 +68,7 @@ h2 {
     object-fit: cover;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
+
 }
 .focusDiv{
     display: flex;
@@ -91,3 +94,7 @@ article p {
 
 }
 
+.focusDiv{
+    cursor: pointer;
+
+}

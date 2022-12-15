@@ -12,6 +12,7 @@ function photographerFactory(data) {
     focusDiv.classList.add("focusDiv");
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
     const h2 = document.createElement("h2");
     h2.textContent = name;
     const citytext = document.createElement("p");
@@ -45,12 +46,16 @@ function photographerFactory(data) {
     const locationText = document.createElement("p");
     locationText.classList.add("cityName");
 
+    const h2Name = document.querySelector(".modal h2");
+    h2Name.innerHTML = "Contactez-moi" + " " + name;
+
     locationText.textContent = city + "," + " " + country;
     const resumeText = document.createElement("p");
     resumeText.textContent = tagline;
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
     const photographpic = document.querySelector(".photographPic");
     photographpic.appendChild(img);
 
