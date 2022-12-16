@@ -7,14 +7,15 @@ const lightbox = (data, whatData, title) => {
   const lightboxdiv = document.createElement("div");
   lightboxdiv.classList.add("lightBoxDiv");
   lightboxdiv.innerHTML = `
-  <button class="lightboxClose"></button>
-  <button class="lightboxNext "></button>
-  <button class="lightboxPrev"></button>
+  <button class="lightboxClose" arialabel="Close dialog" ></button>
+  <button class="lightboxNext "arialabel="Next image"></button>
+  <button class="lightboxPrev"arialabel="Previous image"></button>
   <p class="titlePic">${title}</p>
 `;
   console.log(newlinks);
   const lightBoxContainer = document.createElement("div");
   lightBoxContainer.classList.add("lightBoxContainer");
+  lightBoxContainer.setAttribute("arialabel", "image closeup view");
 
   lightboxdiv
     .querySelector(".lightboxClose")

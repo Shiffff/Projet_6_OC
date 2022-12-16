@@ -52,6 +52,7 @@ function mediaFactory(data) {
     const icon = document.createElement("img");
 
     icon.setAttribute("src", "assets/icons/heart-fill-custom.svg");
+    icon.setAttribute("alt", "Like Button");
 
     picDiv.appendChild(titlePic);
     numberLike.appendChild(p);

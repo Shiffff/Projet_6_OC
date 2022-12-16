@@ -59,3 +59,6 @@ const sortMedia = (trueMedia) => {
     }
   return trueMedia;
 };
+
+const contactbutton = document.querySelector(".contact_button");
+contactbutton.setAttribute("arialabel", "Contact me");

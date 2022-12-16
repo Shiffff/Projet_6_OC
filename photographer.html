@@ -10,7 +10,7 @@
   <body>
     <div class="bground"></div>
     <header>
-      <img src="assets/images/logo.png" class="logo" onclick="location.href='./index.html'" />
+      <img src="assets/images/logo.png" class="logo" onclick="location.href='./index.html'" alt="logo" />
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -23,7 +23,8 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"
+          />
         </header>
         
 				<form>
@@ -37,6 +38,7 @@
               type="text"
               id="firstName"
               name="firstName"
+              aria-label="First name"
               minlength="2"
             /><br>
             <p class="errorMessage ErrorFirstName"></p>
@@ -49,6 +51,8 @@
               type="text"
               id="lastName"
               name="lastName"
+              aria-label="Last name"
+
             /><br>
             <p class="errorMessage ErrorLastName"></p>
           </div>
@@ -60,6 +64,8 @@
               type="email"
               id="email"
               name="email"
+              aria-label="Email"
+
             /><br>
             <p class="errorMessage ErrorEmail"></p>
 					</div>
@@ -73,18 +79,22 @@
               id="TextMessage"
               name="TextMessage"
               minlength="2"
+              aria-label="Your message"
+
             /><br>
             <p class="errorMessage ErrorTextMessage"></p>
           </div>
           <button
           class="btn-submit button"
           type="submit"
+          aria-label="send"
+
         >Envoyer</button>
 				</form>
 			</div>
 		</div>
     <div class="sortDiv">
-      <p>Trier Par</p>
+      <label for="sortSelect">Trier Par</label>
       <select name="sort" id ="sortSelect">
         <option value="Popularité">Popularité</option>
         <option value="Date">Date</option>

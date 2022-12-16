@@ -73,6 +73,7 @@ function photographerFactory(data) {
 
     const iconHeart = document.createElement("img");
     iconHeart.setAttribute("src", "assets/icons/heart-fill-black.svg");
+    iconHeart.setAttribute("alt", "LikesTotals");
 
     const EncartPrices = document.createElement("p");
     EncartPrices.textContent = price + "€" + "/" + "jour";
