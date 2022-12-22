@@ -5,12 +5,15 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b37c69425a.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <div class="bground"></div>
     <header>
-      <img src="assets/images/logo.png" class="logo" onclick="location.href='./index.html'" alt="logo" />
+      <a href="./index.html">
+      <img src="assets/images/logo.png" class="logo" alt="logo" />
+    </a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -94,21 +97,24 @@
 			</div>
 		</div>
     <div class="sortDiv">
-      <label for="sortSelect">Trier Par</label>
-      <select name="sort" id ="sortSelect">
-        <option value="Popularité">Popularité</option>
-        <option value="Date">Date</option>
-        <option value="Titre">Titre</option>
-      </select>
+      <label for="sortSelect">Trier Par </label>
+      <div id="sortSelect" class="select">
+        <div class="selected" role="button" aria-haspopup="listbox", aria-expanded><span class="selectedField">Popularité</span> <i class="fas fa-chevron-down"></i></div>
+        <div class="options" role="listbox" aria-activedescendant="true", aria-selected, aria-labelledby="sortSelect">
+          <button class="option" value="Popularité">Popularité</button>
+          <button class="option" value="Date">Date</button>
+          <button class="option" value="Titre">Titre</button>
+        </div>
+      </div>
     </div>
     <div class="displayMedia">
     </div>
     <div class="lightBox">
-
     </div>
-
-
     </div>
+    <script src="scripts/components/sortMedia.js"></script>
+
+    <script src="scripts/factories/lightboxFactory.js"></script>
     <script src="scripts/components/config.js"></script>
     <script src="scripts/components/lightbox.js"></script>
     <script src="scripts/components/modal.js"></script>

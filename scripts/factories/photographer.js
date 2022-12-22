@@ -1,15 +1,16 @@
 function photographerFactory(data) {
+  // crée les donnée HTML pour les photographe
   const { name, portrait, country, city, tagline, price, id } = data;
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
-    const clickOnDiv = () => {
-      window.location.href = ` ../photographer.html?id=${id}`;
-    };
-
     const article = document.createElement("article");
+
     const focusDiv = document.createElement("div");
     focusDiv.classList.add("focusDiv");
+    const linkForPhotographer = document.createElement("a");
+    linkForPhotographer.setAttribute("href", ` ../photographer.html?id=${id}`);
+
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.setAttribute("alt", name);
@@ -28,12 +29,11 @@ function photographerFactory(data) {
 
     focusDiv.appendChild(img);
     focusDiv.appendChild(h2);
-    article.appendChild(focusDiv);
+    linkForPhotographer.appendChild(focusDiv);
+    article.appendChild(linkForPhotographer);
     article.appendChild(citytext);
     article.appendChild(p);
     article.appendChild(priceItem);
-
-    focusDiv.addEventListener("click", clickOnDiv);
 
     return article;
   }

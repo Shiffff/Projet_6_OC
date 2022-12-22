@@ -32,7 +32,6 @@
   z-index: 99;
   border-radius: 5px;
   background-color: #DB8876;
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +42,7 @@
   left: 0;
   top: 75px;
   position: fixed;
+  max-width: 400px;
   
 }
 
@@ -128,7 +128,8 @@ form input {
 .displayMedia{
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  margin: 0 100px;
+  margin:  27px;
+  gap: 10px
 }
 @media screen and (max-width: 1350px) {
   .displayMedia{
@@ -163,6 +164,8 @@ main {
   display: flex;
   margin: 0 100px;
   margin-bottom: 50px;
+  align-items: center;
+  gap: 25px;
 }
 .titlePicDiv img{
   width: 15px;
@@ -265,6 +268,7 @@ video{
 
 .numberLikeDiv{
   display: flex;
+  align-items: center;
 }
 
 .EncartDiv img {
@@ -280,29 +284,98 @@ form button{
   color: white;
   border-radius: 3px;
 }
-
-#sortSelect{
-  background-color: #901C1C;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-left: 20px;
+form button:hover{
+  background-color: #791b1b;
+  cursor: pointer;
 }
-
-#sortSelect:hover{
-  background-color: #D3573C;
-
-}
-#sortSelect:focus{
-  border: none;
-
-}
-
-
 
 option {
   padding: 100px;
 }
 
+.select {
+  position: relative;
+}
 
+.selected {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+.select.open .options {
+  display: block;
+  background-color: #901C1C;
+  border: none;
+
+}
+
+.selected{
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.selectedField{
+  width: 130px;
+ 
+}
+
+.fas{
+  color: white;
+}
+.selected{
+  background-color: #901C1C;
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 15px;;
+}
+.options button {
+  background: none;
+	color: white;
+	border: none;
+	padding: 6px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  width: 100%;
+  display: flex;
+  
+}
+button[value="Titre"] {
+  border-top: 1px solid white;
+
+}button[value="Date"] {
+  border-top: 1px solid white;
+}
+
+.options {
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 6px;
+  font-weight: 500;
+
+}
+
+
+.option:hover {
+  background-color: #D3573C;
+}
+
+a {
+  text-decoration : none
+}

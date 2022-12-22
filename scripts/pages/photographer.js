@@ -1,34 +1,35 @@
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search); // Récupére l'id du photographe en param
 const photographerID = params.get("id");
-const likesArray = [];
-let trueMedia = [];
 
 async function selectPhotographer(photographers) {
+  // séléctionne parmis l'array de tout les photographer le bon grace a l'ID
   const truePhotographer = photographers.filter(
     (photographer) => photographer.id == photographerID
   );
   return truePhotographer[0];
 }
 async function selectMedia(media) {
+  // selectionne parmis l'array des media les bons media
   const trueMedia = media.filter(
     (media) => media.photographerId == photographerID
   );
-  console.log(trueMedia);
 
   return trueMedia;
 }
 
 async function displayData(photographers) {
+  // Appel la factory et construit l'HTML pour afficher les médias
   const photographHeader = document.querySelector(".photographDescription");
   const encartPrice = document.querySelector("#main");
   const photographerModel = photographerFactory(photographers);
-  const userCardDOM = photographerModel.getOneUserCardDOM();
-  const encartPriceDOM = photographerModel.makeEncartPrice();
+  const userCardDOM = photographerModel.getOneUserCardDOM(); // crée l'encart avec toute les infos du photographe
+  const encartPriceDOM = photographerModel.makeEncartPrice(); // Crée l'encart en bas a droite
 
   photographHeader.appendChild(userCardDOM);
   encartPrice.appendChild(encartPriceDOM);
 }
 async function displayMediaData(medias) {
+  // appel la mediaFactory pour crée l'HTML et affiché les média
   const displayMedia = document.querySelector(".displayMedia");
   displayMedia.innerHTML = "";
   medias.forEach((media) => {
@@ -38,6 +39,7 @@ async function displayMediaData(medias) {
     mediaCardDOM
       .querySelector(".numberLikeDiv")
       .addEventListener("click", (e) => {
+        // Gére le systeme de like/unLike
         if (media.isLiked === true) {
           media.likes--;
           media.isLiked = false;
@@ -53,29 +55,29 @@ async function displayMediaData(medias) {
 }
 
 async function init() {
+  // appel getData pour récupéré la data du photographe puis selectphotographer pour séléctioné le bon
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
+  const { photographers } = await getData();
   const truePhotographer = await selectPhotographer(photographers);
-  displayData(truePhotographer);
+  displayData(truePhotographer); // ensuite display pour l'affiché
 }
 
 async function initMedia() {
-  // Récupère les datas des photographes
-  const { media } = await getPhotographers();
+  // Récupère les datas des photographes (différentes photo et vidéo)
+  const { media } = await getData();
   trueMedia = await selectMedia(media);
 
-  const sortData = sortMedia(trueMedia);
-  displayMediaData(sortData);
+  const initData = sortMedia(trueMedia, "Popularité"); // séléctionne la data a affiché par défault (par défault trié par popularité)
+  displayMediaData(initData);
 
-  const selectSort = document.querySelector("#sortSelect");
-  selectSort.addEventListener("click", () => {
-    const sortData = sortMedia(trueMedia);
+  options.addEventListener("click", (event) => {
+    // écoute la séléction du systeme de trie et l'affiche en concéquence
+    const targetName = event.target.value;
+    const sortData = sortMedia(trueMedia, targetName);
     displayMediaData(sortData);
   });
-  trueMedia.forEach((element) => {
-    likesArray.push(element.likes);
-  });
-  letSum();
+
+  letSum(); // Calcule la somme des differents likes
 }
 
 const letSum = () => {

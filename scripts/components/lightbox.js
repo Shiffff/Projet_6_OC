@@ -1,21 +1,15 @@
 const links = [];
 const newlinks = [];
-console.log(newlinks);
 
 const lightbox = (data, whatData, title) => {
+  // création et ouverture / fermeture de la lightbox
   const lightBox = document.querySelector(".lightBox");
   const lightboxdiv = document.createElement("div");
-  lightboxdiv.classList.add("lightBoxDiv");
-  lightboxdiv.innerHTML = `
-  <button class="lightboxClose" arialabel="Close dialog" ></button>
-  <button class="lightboxNext "arialabel="Next image"></button>
-  <button class="lightboxPrev"arialabel="Previous image"></button>
-  <p class="titlePic">${title}</p>
-`;
-  console.log(newlinks);
+  lightboxInit(lightboxdiv, title);
+
   const lightBoxContainer = document.createElement("div");
   lightBoxContainer.classList.add("lightBoxContainer");
-  lightBoxContainer.setAttribute("arialabel", "image closeup view");
+  lightBoxContainer.setAttribute("aria-label", "image closeup view");
 
   lightboxdiv
     .querySelector(".lightboxClose")
@@ -30,106 +24,71 @@ const lightbox = (data, whatData, title) => {
   });
 
   //************************************************ */
-
-  lightboxdiv
-    .querySelector(".lightboxNext")
-    .addEventListener("click", function nextPic() {
-      const img = lightBoxContainer.children[0].src;
-      let index = links.findIndex((i) => i === img);
-      if (index === links.length - 1) {
-        index = -1;
-      }
-
-      const nextEl = links[index + 1];
-      newlinks.forEach((name) => {
-        if (nextEl == name.link) {
-          const titlepic = lightboxdiv.querySelector(".titlePic");
-          titlepic.innerHTML = name.title;
-        }
-
-        const extentionTypeNext = nextEl.split(".").pop();
-        if (extentionTypeNext == "jpg") {
-          lightBoxContainer.innerHTML = `<img  src=${nextEl} alt="${name.title}" >`;
-        } else if (extentionTypeNext == "mp4") {
-          lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl} alt="${name.title}">`;
-        }
-      });
-    });
-  document.addEventListener("keyup", function (e) {
-    if (e.key === "ArrowRight") {
-      const img = lightBoxContainer.children[0].src;
-      let index = links.findIndex((i) => i === img);
-      if (index === links.length - 1) {
-        index = -1;
-      }
-
-      const nextEl = links[index + 1];
-      newlinks.forEach((name) => {
-        if (nextEl == name.link) {
-          const titlepic = lightboxdiv.querySelector(".titlePic");
-          titlepic.innerHTML = name.title;
-        }
-      });
-      const extentionTypeNext = nextEl.split(".").pop();
-      if (extentionTypeNext == "jpg") {
-        lightBoxContainer.innerHTML = `<img  src=${nextEl} >`;
-      } else if (extentionTypeNext == "mp4") {
-        lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl}>`;
-      }
-    }
-  });
-
-  lightboxdiv
-    .querySelector(".lightboxPrev")
-    .addEventListener("click", function prevPic() {
-      const img = lightBoxContainer.children[0].src;
-      let index = links.findIndex((i) => i === img);
-      if (index === 0) {
-        index = links.length;
-      }
-      const nextEl = links[index - 1];
-      newlinks.forEach((name) => {
-        if (nextEl == name.link) {
-          const titlepic = lightboxdiv.querySelector(".titlePic");
-          titlepic.innerHTML = name.title;
-        }
-
-        const extentionTypeNext = nextEl.split(".").pop();
-        if (extentionTypeNext == "jpg") {
-          lightBoxContainer.innerHTML = `<img  src=${nextEl} alt="${name.title}">`;
-        } else if (extentionTypeNext == "mp4") {
-          lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl} alt="${name.title}">`;
-        }
-      });
-    });
-  document.addEventListener("keyup", function (e) {
-    if (e.key === "ArrowLeft") {
-      const img = lightBoxContainer.children[0].src;
-      let index = links.findIndex((i) => i === img);
-      if (index === 0) {
-        index = links.length;
-      }
-      const nextEl = links[index - 1];
-      newlinks.forEach((name) => {
-        if (nextEl == name.link) {
-          const titlepic = lightboxdiv.querySelector(".titlePic");
-          titlepic.innerHTML = name.title;
-        }
-      });
-      const extentionTypeNext = nextEl.split(".").pop();
-      if (extentionTypeNext == "jpg") {
-        lightBoxContainer.innerHTML = `<img  src=${nextEl}>`;
-      } else if (extentionTypeNext == "mp4") {
-        lightBoxContainer.innerHTML = `<video controls='controls' src=${nextEl}>`;
-      }
-    }
-  });
+  addNextEventListeners(lightBoxContainer, lightboxdiv);
+  addPrevEventListeners(lightBoxContainer, lightboxdiv);
 
   if (whatData == "img") {
-    lightBoxContainer.innerHTML = `<img  src=${data.src} alt="${title}">`;
+    lightBoxContainer.innerHTML = `<img  src="${data.src}" alt="${title}">`;
   } else if (whatData == "vds") {
     lightBoxContainer.innerHTML = `<video controls='controls' src=${data.src} alt="${title}">`;
   }
   lightBox.appendChild(lightboxdiv);
   lightboxdiv.appendChild(lightBoxContainer);
+};
+
+const changePic = (lightBoxContainer, lightboxdiv, number) => {
+  // gère le changement de photo
+  return (e) => {
+    const img = lightBoxContainer.children[0].src;
+    let index = links.findIndex((i) => i === img);
+    if (number > 0) {
+      if (index === links.length - 1) {
+        index = -1;
+      }
+    } else if (number < 0) {
+      if (index === 0) {
+        index = links.length;
+      }
+    }
+
+    const nextEl = links[index + number]; // Affiche l'élément suivant
+    newlinks.forEach((name) => {
+      if (nextEl == name.link) {
+        const titlepic = lightboxdiv.querySelector(".titlePic");
+        titlepic.innerHTML = name.title;
+
+        const extentionTypeNext = nextEl.split(".").pop();
+        if (extentionTypeNext == "jpg") {
+          lightBoxContainer.innerHTML = `<img  src="${nextEl}" alt="${name.title}" >`;
+        } else if (extentionTypeNext == "mp4") {
+          lightBoxContainer.innerHTML = `<video controls='controls' src="${nextEl}" alt="${name.title}">`;
+        }
+      }
+    });
+  };
+};
+
+const addNextEventListeners = (lightBoxContainer, lightboxdiv) => {
+  // écoute le clique ou la touche pour changé de photo dans la lightbox
+  lightboxdiv
+    .querySelector(".lightboxNext")
+    .addEventListener("click", changePic(lightBoxContainer, lightboxdiv, 1));
+
+  document.addEventListener("keyup", function (e) {
+    if (e.key === "ArrowRight") {
+      changePic(lightBoxContainer, lightboxdiv, 1)();
+    }
+  });
+};
+
+const addPrevEventListeners = (lightBoxContainer, lightboxdiv) => {
+  // écoute le clique ou la touche pour changé de photo dans la lightbox
+  lightboxdiv
+    .querySelector(".lightboxPrev")
+    .addEventListener("click", changePic(lightBoxContainer, lightboxdiv, -1));
+  document.addEventListener("keyup", function (e) {
+    if (e.key === "ArrowLeft") {
+      changePic(lightBoxContainer, lightboxdiv, -1)();
+    }
+  });
 };

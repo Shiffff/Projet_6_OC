@@ -1,4 +1,5 @@
 function mediaFactory(data) {
+  // crée les donnée HTML pour les média
   const { price, date, likes, image, title, photographerId, id, video } = data;
   const picture = `assets/images/${photographerId}/${image}`;
   const videoSrc = `assets/images/${photographerId}/${video}`;
@@ -19,8 +20,9 @@ function mediaFactory(data) {
       img.setAttribute("alt", title);
 
       article.appendChild(img);
-      const obj = { link: `${localLink}${picture}`, title: title };
+      const obj = { link: `${localLink}${picture}`, title };
       newlinks.push(obj);
+
       links.push(`${localLink}${picture}`);
     } else if (video) {
       const vds = document.createElement("video");
@@ -31,7 +33,7 @@ function mediaFactory(data) {
       vds.setAttribute("src", videoSrc);
       vds.setAttribute("alt", title);
 
-      const obj = { link: `${localLink}${videoSrc}`, title: title };
+      const obj = { link: `${localLink}${videoSrc}`, title };
       newlinks.push(obj);
 
       links.push(`${localLink}${videoSrc}`);
