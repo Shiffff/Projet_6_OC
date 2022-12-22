@@ -7,10 +7,6 @@ const lightbox = (data, whatData, title) => {
   const lightboxdiv = document.createElement("div");
   lightboxInit(lightboxdiv, title);
 
-  const lightBoxContainer = document.createElement("div");
-  lightBoxContainer.classList.add("lightBoxContainer");
-  lightBoxContainer.setAttribute("aria-label", "image closeup view");
-
   lightboxdiv
     .querySelector(".lightboxClose")
     .addEventListener("click", function closeModal() {
@@ -23,17 +19,13 @@ const lightbox = (data, whatData, title) => {
     }
   });
 
-  //************************************************ */
+  const lightBoxContainer = document.createElement("div");
+  lightBoxContainer.classList.add("lightBoxContainer");
+  lightBoxContainer.setAttribute("aria-label", "image closeup view");
   addNextEventListeners(lightBoxContainer, lightboxdiv);
   addPrevEventListeners(lightBoxContainer, lightboxdiv);
 
-  if (whatData == "img") {
-    lightBoxContainer.innerHTML = `<img  src="${data.src}" alt="${title}">`;
-  } else if (whatData == "vds") {
-    lightBoxContainer.innerHTML = `<video controls='controls' src=${data.src} alt="${title}">`;
-  }
-  lightBox.appendChild(lightboxdiv);
-  lightboxdiv.appendChild(lightBoxContainer);
+  lightboxDOM(data, whatData, title, lightBoxContainer, lightBox, lightboxdiv);
 };
 
 const changePic = (lightBoxContainer, lightboxdiv, number) => {
@@ -51,19 +43,12 @@ const changePic = (lightBoxContainer, lightboxdiv, number) => {
       }
     }
 
-    const nextEl = links[index + number]; // Affiche l'élément suivant
-    newlinks.forEach((name) => {
-      if (nextEl == name.link) {
-        const titlepic = lightboxdiv.querySelector(".titlePic");
-        titlepic.innerHTML = name.title;
+    let nextEl = links[index + number]; // Affiche l'élément suivant
+    nextEl = nextEl.split("5500/").pop();
+    nextEl = localLink + nextEl;
 
-        const extentionTypeNext = nextEl.split(".").pop();
-        if (extentionTypeNext == "jpg") {
-          lightBoxContainer.innerHTML = `<img  src="${nextEl}" alt="${name.title}" >`;
-        } else if (extentionTypeNext == "mp4") {
-          lightBoxContainer.innerHTML = `<video controls='controls' src="${nextEl}" alt="${name.title}">`;
-        }
-      }
+    newlinks.forEach((name) => {
+      changePicDom(lightBoxContainer, lightboxdiv, name, nextEl);
     });
   };
 };

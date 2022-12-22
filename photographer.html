@@ -96,24 +96,26 @@
 				</form>
 			</div>
 		</div>
-    <div class="sortDiv">
-      <label for="sortSelect">Trier Par </label>
-      <div id="sortSelect" class="select">
-        <div class="selected" role="button" aria-haspopup="listbox", aria-expanded><span class="selectedField">Popularité</span> <i class="fas fa-chevron-down"></i></div>
-        <div class="options" role="listbox" aria-activedescendant="true", aria-selected, aria-labelledby="sortSelect">
-          <button class="option" value="Popularité">Popularité</button>
-          <button class="option" value="Date">Date</button>
-          <button class="option" value="Titre">Titre</button>
-        </div>
-      </div>
+<div class="sortDiv">
+  <label for="sortSelect">Trier Par </label>
+  <div id="sortSelect" class="select" aria-expanded="true" aria-haspopup="listbox">
+    <div class="selected" role="button" aria-controls="options" aria-labelledby="selectedField">
+      <span id="selectedField" class="selectedField">Popularité</span> 
+      <i class="fas fa-chevron-down"></i>
     </div>
+    <div id="options" class="options" role="listbox" aria-activedescendant="true" aria-labelledby="sortSelect">
+      <button class="option" role="option" value="Popularité">Popularité</button>
+      <button class="option" role="option" value="Date">Date</button>
+      <button class="option" role="option" value="Titre">Titre</button>
+    </div>
+  </div>
+</div>
     <div class="displayMedia">
     </div>
     <div class="lightBox">
     </div>
     </div>
     <script src="scripts/components/sortMedia.js"></script>
-
     <script src="scripts/factories/lightboxFactory.js"></script>
     <script src="scripts/components/config.js"></script>
     <script src="scripts/components/lightbox.js"></script>
