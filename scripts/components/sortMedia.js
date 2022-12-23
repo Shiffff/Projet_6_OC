@@ -1,5 +1,7 @@
 const select = document.querySelector("#sortSelect");
 const selected = select.querySelector(".selectedField");
+const sortSelect = select.querySelector(".sortSelect");
+
 const options = select.querySelector(".options");
 
 document.addEventListener("click", (event) => {
@@ -62,8 +64,9 @@ const filters = [Popular, Name, DateObj];
 options.addEventListener("click", (event) => {
   const option = event.target;
   if (option.tagName === "BUTTON") {
+    addOption(selected.textContent, option, options);
     selected.textContent = option.textContent;
-    select.classList.remove("open");
+
     selected.nextElementSibling.className = "fas fa-chevron-down";
   }
 });

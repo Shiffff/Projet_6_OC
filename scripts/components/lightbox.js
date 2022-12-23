@@ -44,8 +44,12 @@ const changePic = (lightBoxContainer, lightboxdiv, number) => {
     }
 
     let nextEl = links[index + number]; // Affiche l'élément suivant
-    nextEl = nextEl.split("5500/").pop();
-    nextEl = localLink + nextEl;
+    console.log(nextEl);
+
+    nextEl = nextEl.split("assets/")[1];
+    console.log(nextEl);
+    nextEl = localLink + "assets/" + nextEl;
+    console.log(nextEl);
 
     newlinks.forEach((name) => {
       changePicDom(lightBoxContainer, lightboxdiv, name, nextEl);

@@ -39,3 +39,19 @@ changePicDom = (lightBoxContainer, lightboxdiv, name, nextEl) => {
     }
   }
 };
+
+addOption = (lastOption, newSelected, options) => {
+  const optionsContainer = options.querySelectorAll(".option");
+  optionsContainer.forEach((option) => {
+    if (option.value === newSelected.value) {
+      options.removeChild(option);
+    }
+  });
+  const newOption = document.createElement("button");
+  newOption.classList.add("option");
+  newOption.setAttribute("role", "option");
+  newOption.setAttribute("value", lastOption);
+  newOption.innerText = lastOption;
+  options.appendChild(newOption);
+};
+removeOption = (option, selected) => {};

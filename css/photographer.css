@@ -349,11 +349,10 @@ option {
   display: flex;
   
 }
-button[value="Titre"] {
+.options .option:nth-child(1) {
   border-top: 1px solid white;
+  border-bottom: 1px solid white;
 
-}button[value="Date"] {
-  border-top: 1px solid white;
 }
 
 .options {
@@ -381,4 +380,16 @@ a {
 }
 .option:focus {
   outline: 2px solid black;
+}
+.closeDialog{
+  background: url(../assets/icons/close.svg) no-repeat;
+  border: none;
+  width: 50px;
+  height: 50px  ;
+  cursor: pointer;
+}
+
+.closeDialogA{
+  width: 50px;
+  height: 50px;
 }
