@@ -379,3 +379,6 @@ button[value="Titre"] {
 a {
   text-decoration : none
 }
+.option:focus {
+  outline: 2px solid black;
+}
