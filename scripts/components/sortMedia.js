@@ -79,3 +79,20 @@ const sortMedia = (trueMedia, targetName) => {
 
 const contactbutton = document.querySelector(".contact_button");
 contactbutton.setAttribute("aria-label", "Contact me");
+
+document
+  .getElementById("selectedField")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Tab") {
+      // Si l'élément est déjà étendu, on le rétrécit et on cache les options. Sinon, on l'étend et on affiche les options.
+      if (this.getAttribute("aria-expanded") === "true") {
+        this.setAttribute("aria-expanded", "false");
+        document.getElementById("options").setAttribute("aria-hidden", "true");
+        select.classList.toggle("open");
+      } else {
+        this.setAttribute("aria-expanded", "true");
+        document.getElementById("options").setAttribute("aria-hidden", "false");
+        select.classList.toggle("open");
+      }
+    }
+  });
