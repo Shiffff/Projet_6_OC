@@ -37,12 +37,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  left: 50%;
   right: 0;
-  left: 0;
-  top: 75px;
   position: fixed;
   max-width: 400px;
+  overflow: auto;
+  top: 50%;
+  max-height: 100%;
+  transform: translateY(-50%)translateX(-50%);
   
 }
 
@@ -318,7 +320,8 @@ option {
 }
 
 .selected{
-  width: 100px;
+  width: 120px;
+  border-radius: 4px 4px 0 0;
   display: flex;
   justify-content: space-between;
 }
@@ -367,6 +370,7 @@ option {
   padding-right: 10px;
   padding-bottom: 6px;
   font-weight: 500;
+  border-radius: 0 0 4px 4px;
 
 }
 
@@ -393,3 +397,9 @@ a {
   width: 50px;
   height: 50px;
 }
+
+.selectedField{
+  font-weight: 600;
+  margin-right: 18px;
+}
+
