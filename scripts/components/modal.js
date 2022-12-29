@@ -114,4 +114,5 @@ const launchModalConfirmation = () => {
   // Show the modal confirmation
   modal.style.display = "none";
   bground.style.display = "none";
+  htmlElement.style.overflow = "visible";
 };
