@@ -15,10 +15,14 @@ document.addEventListener("click", (event) => {
 select.addEventListener("click", () => {
   // ouvre et ferme le menu de trie
   select.classList.toggle("open");
+  const selectedBtn = select.querySelector(".selected");
+
   if (selected.nextElementSibling.className == "fas fa-chevron-up") {
     selected.nextElementSibling.className = "fas fa-chevron-down";
+    selectedBtn.style.borderRadius = "4px";
   } else {
     selected.nextElementSibling.className = "fas fa-chevron-up";
+    selectedBtn.style.borderRadius = "4px 4px 0px 0px";
   }
 });
 
